@@ -13,11 +13,13 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+
 import br.mastertech2020.dantasmr.registroponto.dto.NovoUsuarioDTO;
 import br.mastertech2020.dantasmr.registroponto.models.Usuario;
 import br.mastertech2020.dantasmr.registroponto.service.UsuarioService;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class UsuarioControllerTests {
 	
 	@InjectMocks

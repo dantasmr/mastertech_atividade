@@ -18,6 +18,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import br.mastertech2020.dantasmr.registroponto.dto.ListagemPontoDTO;
 import br.mastertech2020.dantasmr.registroponto.dto.PontoDTO;
@@ -29,7 +30,7 @@ import br.mastertech2020.dantasmr.registroponto.repositories.UsuarioRepository;
 import br.mastertech2020.dantasmr.registroponto.serviceImpl.PontoServiceImpl;
 import br.mastertech2020.dantasmr.registroponto.util.PontoMapper;
 
-@RunWith(MockitoJUnitRunner.class)
+@RunWith(SpringRunner.class)
 public class PontoServiceTests {
 	
 	@InjectMocks
