@@ -2,6 +2,7 @@ package br.mastertech2020.dantasmr.registroponto.controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -15,6 +16,8 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
 
 import br.mastertech2020.dantasmr.registroponto.dto.ListagemPontoDTO;
+import br.mastertech2020.dantasmr.registroponto.dto.PontoDTO;
+import br.mastertech2020.dantasmr.registroponto.models.Ponto;
 import br.mastertech2020.dantasmr.registroponto.service.PontoService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -27,10 +30,9 @@ public class PontoControllerTests {
 	@Mock
 	private PontoService pontoServiceMock;
 	
-	@Before
-	public void initMocks() {
-		
-		
+	
+	@Test
+	public void testGetRegistrosPonto() {
 		
 		ListagemPontoDTO listagemPontoDTO = new ListagemPontoDTO();
 		listagemPontoDTO.setPontos(null);
@@ -39,17 +41,26 @@ public class PontoControllerTests {
 		
 		when(pontoServiceMock.getRegistrosPontoByUserId(anyInt())).thenReturn(listagem) ;
 		
-
-
-	}
-	
-	@Test
-	public void TestListagem() {
-		
 		ResponseEntity<ListagemPontoDTO> resu = pontoController.getRegistrosPonto(1);
 		assertNotNull(resu);
 	}
 	
+	@Test
+	public void testUpdateUser() {
+		
+		Ponto ponto = new Ponto();
+		ponto.setId(1);
+
+		Optional<Ponto> pontoOptional = Optional.of(ponto);
+		
+		when(pontoServiceMock.registraPonto(anyInt(), any(PontoDTO.class))).thenReturn(pontoOptional) ;
+		
+		PontoDTO pontoDTO = new PontoDTO();
+		ResponseEntity<Ponto> resu = pontoController.updateUser(1, pontoDTO);
+		assertNotNull(resu);
+	}
 	
+	
+
 	
 }
