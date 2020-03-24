@@ -4,26 +4,21 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-
 import java.util.Optional;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import br.mastertech2020.dantasmr.registroponto.dto.ListagemPontoDTO;
 import br.mastertech2020.dantasmr.registroponto.dto.PontoDTO;
 import br.mastertech2020.dantasmr.registroponto.models.Ponto;
 import br.mastertech2020.dantasmr.registroponto.service.PontoService;
 
-@SpringBootTest
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PontoControllerTests {
+	
 	
 	@InjectMocks
 	private PontoController pontoController;

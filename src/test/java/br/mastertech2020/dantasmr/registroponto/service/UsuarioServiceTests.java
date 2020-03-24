@@ -15,7 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import br.mastertech2020.dantasmr.registroponto.dto.NovoUsuarioDTO;
 import br.mastertech2020.dantasmr.registroponto.dto.UsuarioDTO;
@@ -23,7 +23,7 @@ import br.mastertech2020.dantasmr.registroponto.models.Usuario;
 import br.mastertech2020.dantasmr.registroponto.repositories.UsuarioRepository;
 import br.mastertech2020.dantasmr.registroponto.serviceImpl.UsuarioServiceImpl;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class UsuarioServiceTests {
 	
 	@InjectMocks
@@ -56,6 +56,7 @@ public class UsuarioServiceTests {
 		Optional<Usuario> usuarioRep = Optional.of(usuario1);
 		when(usuarioRepositoryMock.findById(anyInt())).thenReturn(usuarioRep);
 		when(usuarioRepositoryMock.save(any(Usuario.class))).thenReturn(usuario1);
+		when(usuarioRepositoryMock.findById(anyInt())).thenReturn(usuarioRep);
 		when(usuarioRepositoryMock.findAll()).thenReturn(usuarios);
 		
 		
@@ -88,6 +89,15 @@ public class UsuarioServiceTests {
 		assertNotNull(usuario);
 		
 	}
+	
+	@Test
+	public void testGeUsuario() {
+		
+		Optional<Usuario> usuario = usuarioService.getUsuario(1);
+		assertNotNull(usuario);
+		
+	}
+	
 	
 	@Test
 	public void testGetTodosUsuarios() {

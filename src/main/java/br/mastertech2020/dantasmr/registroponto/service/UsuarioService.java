@@ -10,7 +10,8 @@ import br.mastertech2020.dantasmr.registroponto.models.Usuario;
 public interface UsuarioService {
 	
 	public Usuario criaUsuario(NovoUsuarioDTO novoUsuarioDTO);
-	public Optional<Usuario> atualizaUsuario(int idUser, UsuarioDTO usuarioDTO);
+	public Optional<Usuario> atualizaUsuario(final int idUsuario, UsuarioDTO usuarioDTO);
+	public Optional<Usuario> getUsuario(final int idUsuario);
 	public List<Usuario> getTodosUsuarios();
 		
 }

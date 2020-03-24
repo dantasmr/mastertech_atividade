@@ -32,10 +32,25 @@ public class UsuarioController {
 
 	@GetMapping("/usuarios")
 	@ResponseStatus(code = HttpStatus.OK)
-	public ResponseEntity<List<Usuario>> getAllUsers() {
+	public ResponseEntity<List<Usuario>> getUsuarios() {
 		return ResponseEntity.ok(usuarioService.getTodosUsuarios());
 	}
 
+	@GetMapping("/usuarios/{id}")
+	@ResponseStatus(code = HttpStatus.OK)
+	public ResponseEntity<Usuario> getUsuario(@PathVariable(value = "id") int idUsuario) {
+		
+		Optional<Usuario> usuario = usuarioService.getUsuario(idUsuario);
+		
+		if (usuario.isPresent()) {
+			return ResponseEntity.ok(usuario.get());
+		}else {
+			return ResponseEntity.notFound().build();
+		}
+
+	}
+	
+	
 	@PostMapping("/usuarios")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Usuario novo(@Valid @RequestBody NovoUsuarioDTO novoUsuarioDTO) {

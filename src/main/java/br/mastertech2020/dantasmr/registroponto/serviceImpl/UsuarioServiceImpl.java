@@ -28,9 +28,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 	
 	@Override
-	public Optional<Usuario> atualizaUsuario(int idUser, UsuarioDTO usuarioDTO) {
+	public Optional<Usuario> atualizaUsuario(int idUsuario, UsuarioDTO usuarioDTO) {
 		
-		Optional<Usuario> usuarioRepo = usuarioRepository.findById(idUser);
+		Optional<Usuario> usuarioRepo = usuarioRepository.findById(idUsuario);
 		
 		if (usuarioRepo.isPresent()) {
 			Usuario usuario = usuarioRepo.get();
@@ -45,12 +45,19 @@ public class UsuarioServiceImpl implements UsuarioService{
 	}
 	
 	@Override
+	public Optional<Usuario> getUsuario(int idUsuario) {
+		return usuarioRepository.findById(idUsuario);
+	}
+	
+	
+	@Override
 	public List<Usuario> getTodosUsuarios() {
 		Iterable<Usuario> iterable = usuarioRepository.findAll();		
 		List<Usuario> result = new ArrayList<Usuario>();
 		iterable.forEach(result::add);
 		return result;
 	}
-	
+
+
 
 }

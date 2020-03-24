@@ -4,22 +4,23 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import br.mastertech2020.dantasmr.registroponto.dto.NovoUsuarioDTO;
 import br.mastertech2020.dantasmr.registroponto.models.Usuario;
 import br.mastertech2020.dantasmr.registroponto.service.UsuarioService;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class UsuarioControllerTests {
 	
 	@InjectMocks
@@ -27,13 +28,24 @@ public class UsuarioControllerTests {
 		
 	@Mock
 	private UsuarioService usuarioServiceMock;
+	
+	@Test
+	public void testGetUsuario() {
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(1);
+		Optional<Usuario> usuarioOptional = Optional.of(usuario);
+		when(usuarioServiceMock.getUsuario(anyInt())).thenReturn(usuarioOptional) ;		
+		ResponseEntity<Usuario> resu = usuarioController.getUsuario(1);
+		assertNotNull(resu);
+	}
 		
 	@Test
-	public void testGetAllUsers() {
+	public void testGetUsuarios() {
 		
 		List<Usuario> usuarios = new ArrayList<Usuario>();		
 		when(usuarioServiceMock.getTodosUsuarios()).thenReturn(usuarios) ;		
-		ResponseEntity<List<Usuario>> resu = usuarioController.getAllUsers();
+		ResponseEntity<List<Usuario>> resu = usuarioController.getUsuarios();
 		assertNotNull(resu);
 	}
 	

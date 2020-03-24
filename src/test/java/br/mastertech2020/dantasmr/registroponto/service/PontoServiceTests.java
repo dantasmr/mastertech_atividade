@@ -5,21 +5,17 @@ import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import br.mastertech2020.dantasmr.registroponto.dto.ListagemPontoDTO;
 import br.mastertech2020.dantasmr.registroponto.dto.PontoDTO;
 import br.mastertech2020.dantasmr.registroponto.models.Batida;
@@ -30,7 +26,7 @@ import br.mastertech2020.dantasmr.registroponto.repositories.UsuarioRepository;
 import br.mastertech2020.dantasmr.registroponto.serviceImpl.PontoServiceImpl;
 import br.mastertech2020.dantasmr.registroponto.util.PontoMapper;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class PontoServiceTests {
 	
 	@InjectMocks
