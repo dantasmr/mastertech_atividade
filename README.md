@@ -20,7 +20,7 @@ POST Criacao de usuario
 
 http://localhost:8080/api/v1/usuarios
 
-API de criacao de usuario. 
+API de criacao de usuario.
 Todos os atributos devem ser preenchidos, com excecao do id, que sera gerado automaticamente no momento do cadastro.
 
 Atributos: id, nome completo, cpf, email , data de cadastro
